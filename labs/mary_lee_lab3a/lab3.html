@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lab 3</title>
+    <script type="text/javascript">
+      window.onload = function () {
+          // var images = document.images[0];
+          // images.onclick = function() {
+          //   this.style.border = "solid red";
+          // }
+          var images = document.getElementsByTagName('img');
+          // for (var i = 0; i < images.length; i++) {
+          //   images[i].style.border = 'solid red';
+          // }
+          for (var i = 0; i < images.length; i++) {
+            images[i].onclick = function () {
+              this.style.border = "solid red";
+            };
+          }
+
+          var div1images = document.getElementById("div1").getElementsByTagName('img');
+          for (var i = 0; i < div1images.length; i++) {
+            div1images[i].onmouseover = function () {
+              this.width=100;
+            };
+          }
+
+          var allParagraphs = document.getElementsByTagName('p');
+          for (var i = 0; allParagraphs.length; i++) {
+            allParagraphs[i].ondblclick = function () {
+              this.style.color = "blue";
+            };
+          }
+
+          var div3par = document.getElementById('div3').getElementsByTagName('p');
+          for (var i = 0; i <div3par.length; i++) {
+            div3par[i].onmouseover = function() {
+              this.style.backgroundColor = "yellow";
+            };
+          }
+      }
+    </script>
+  </head>
+  <body>
+      <div id="div1">
+        <img src="cat.jpg" id="im1" alt="cat" />
+        <img src="dog.jpg" id="im2" alt="dog" />
+        <img src="fish.jpg" id="im3" alt="fish" />
+      </div>
+
+      <div id="div2">
+        <p id="p1">Hello!</p>
+        <p id="p2">This is p2</p>
+        <p id="p3">This is p3</p>
+      </div>
+
+      <div id="div3">
+        <p id="p4">This is p4</p>
+        <p id="p5">This is p5</p>
+        <img src="bird.jpg" id="im4" alt="bird" />
+        <img src="turtle.jpg" id="im5" alt="turtle" />
+      </div>
+  </body>
+</html>

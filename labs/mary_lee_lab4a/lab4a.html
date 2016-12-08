@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+></script>
+</head>
+<body>
+    <div id="div1">
+        <img src="cat.jpg" alt="">
+        <img src="dog.jpg" alt="">
+        <img src="fish.jpg" alt="">
+    </div>
+    <div id="div2">
+        <p id="p1">This is paragraph 1</p>
+        <p id="p2">This is paragraph 2</p>
+        <p id="p3">This is paragraph 3</p>
+    </div>
+    <div id="div3">
+        <p id="p4">This is paragraph 4</p>
+        <p id="p5">This is paragraph 5</p>
+        <img src="bird.jpg" alt="">
+        <img src="turtle.jpg" alt="">
+        
+        <script>
+            $(function() {
+                $('img').click(function() {
+                    $(this).css('border', 'solid red');
+                });
+                
+                $('#div1 img').hover(function() {
+                    $(this).css('width', '100px');
+                });
+                
+                $('p').dblclick(function() {
+                    $(this).css('color', 'blue');
+                });
+                
+                $('#div3 p').hover(function() {
+                    $(this).css('background-color', 'yellow');
+                })
+            })
+        </script>
+    </div>
+</body>
+</html>

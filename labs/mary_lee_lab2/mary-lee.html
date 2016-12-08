@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            window.onload = function () {
+                //Exercise 1: Get Days Until Christmas
+                var today = new Date();
+                var christmasDate = new Date(2016, 11, 25);
+                var days = 1000 * 60 * 60 * 24;
+                var difference = christmasDate.getTime() - today.getTime();
+                var daysUntilChristmas = difference / days;
+                alert(Math.round(daysUntilChristmas) + 'days until Christmas!');
+                
+                // Exercise 2: Loop Through NHL teams
+                var nhlTeams = [
+                    "Anaheim Ducks",
+                    "Arizona Coyotes",
+                    "Boston Bruins",
+                    "Buffalo Sabres",
+                    "Calgary Flames",
+                    "Carolina Hurricanes",
+                    "Chicago Blackhawks",
+                    "Colorado Avalanche",
+                    "Columbus Blue Jackets",
+                    "Dallas Stars",
+                    "Detroit Red Wings",
+                    "Edmonton Oilers",
+                    "Florida Panthers",
+                    "Los Angeles Kings",
+                    "Minnesota Wild",
+                    "Montreal Canadiens",
+                    "Nashville Predators",
+                    "New Jersey Devils",
+                    "New York Islanders",
+                    "New York Rangers",
+                    "Philadelphia Flyers",
+                    "Pittsburgh Penguins",
+                    "Ottawa Senators",
+                    "San Jose Sharks",
+                    "St Louis Blues",
+                    "Tampa Bay Lightning",
+                    "Toronto Maple Leafs",
+                    "Vancouver Canucks",
+                    "Washington Capitals",
+                    "Winnipeg Jets"
+                ];
+                
+                for (var i = 0; i < nhlTeams.length; i++) {
+                    if (nhlTeams[i].indexOf('an') > -1) {
+                        alert(nhlTeams[i]);
+                    }
+                }
+                
+                // Exercise 3: CSS style
+                for (var i = 0; i < document.images.length; i++) {
+                    document.images[i].style.border="solid red";
+                    document.getElementsByTagName('img')[i].width="100";
+                }
+                
+            }
+
+        </script>   
+    </head>
+    <body>
+        <img src="cat.jpg" alt="">
+        <img src="dog.jpg" alt="">
+        <img src="bird.jpg" alt="">
+
+    </body>
+</html>

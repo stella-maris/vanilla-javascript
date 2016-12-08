@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+    ></script>
+    </head>
+    <body>
+        <input type="text">
+        <button id="myButton">Add New</button>
+        <ul></ul>
+        <button id="clearBtn">Clear All</button>
+        <script>
+            var myButton = $('#myButton');
+            var clearBtn = $('#clearBtn');
+            $(myButton).css('background-color', 'red');
+            
+            $(myButton).click(function() {
+                var listItem = $('input').val();
+                if(listItem == '') {
+                    alert('Type something');
+                } else {
+                     $('ul').append('<li>'+ listItem + '<button>Delete</button>'+'</li>');
+                    listItem = $('input').val('');
+                    
+                    var listButton = $('li button');
+                    $(listButton).click(function() {
+                        $(this).parent().remove();
+                    })
+                }                
+            });
+            
+            $(clearBtn).click(function() {
+                $('input').val('');
+                $('li').remove();
+            });
+        </script>  
+    </body>
+</html>
