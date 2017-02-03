@@ -1,0 +1,201 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Mary Lee's Assignment #2</title>
+        <script src="Chart.bundle.js"></script>
+        <style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+        button {
+            background-color: rgb(77, 185, 107);
+            color: white;
+            font-size: 14px;
+            width: 200px;
+            height: 50px;
+        }
+        </style>
+    </head>
+    <body>
+        <h1>Assignment 2:</h1>
+        <h2>Popular JS Libraries Research</h2>
+        <h3>Questions to Answer:</h3>
+        <ol>
+            <li>What is the library useful for?</li>
+            <li>What are the benefits and drawbacks?</li>
+            <li>Who writes this library?</li>
+            <li>Give examples of how it's used.</li>
+            <li>What are your opinions about the library?</li>
+            <li>Would using this library save time on development?</li>
+            <li>Did you like the library? Why or why not?</li>
+            <li>Show examples of some of the best features/implementations you found about the library.</li>
+        </ol>
+        <h3>Answers:</h3>
+        <ol>
+            <li>The ChartJS library is extremely useful in displaying data of any complexity in a variety of forms such as line, bar, pie, doughnut, bubble, polar, and combinations.</li>
+            <li>
+                The benefits of this library:
+                <ul>
+                    <li>If you already have nodejs installed, it is quick and easy to install.</li>
+                    <li>It provides a variety of samples in its node modules, to give you a better understanding of the types of data formats available for use.</li>
+                    <li>You can create a combination data chart to have a more comprehensive display with multiple datasets.</li>
+                    <li>Data charts include animation.</li>
+                    <li>Charts are responsive! You don't have to add any styling.</li>
+                </ul>
+                
+                There's really only one drawback of this library, but it can be a major one:
+                <ul>
+                    <li>
+                        <p>You're limited in custom styling capabilities.  For example, with the pie chart, you can only really do very minimal custom styling such as altering the width and height of the pie chart.</p>
+                        <p>If you require some sort of chart display that is for business and is customer-facing or is part of a product, then this can be a major drawback because it is generic in its "straight out of the box" concept.</p>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                ChartJS is an open-source library.  As mentioned on chartjs.org's main page, contributions are welcome, so anybody can write to this library.
+            </li>
+            <li>
+                <p>Some examples of how this library can be used is to track sales and revenues, number of active users on a site.  With the ability to plot multiple data sets in one chart or graph, you can, for example plot your audience/customer base based on a variety of factors such as age group and socio-economic standings.</p>
+                <p>Of course, you can also use this for scientific research purposes.  In general, any traditional necessity for displaying data in chart form, can be done with this library.</p>
+            </li>
+            <li>
+                <p>ChartJS is slick and looks lightweight enough to be easy to use. The sample codes are easy enough to follow.  Compared to a similar library like Highcharts.com, however, it lacks in variety.  Because Highcharts.com is not open sourced, but rather a private company, the motivation for profit gives Highcharts.com an edge over ChartJS.</p>
+            </li>
+            <li>
+                Using this library would definitely save time on development because no front-end work would be needed in creating the charts, so you can jump straight into focusing on feeding your desired data into the charts.
+            </li>
+            <li>This library would be excellent for internal use such as on an admin application.  I liked it at first until I discovered Highcharts and saw what animations it provided.  However, I still like ChartsJS for its simplicity and because its open-source, you don't have to pay for it.</li>
+            <li>See below for some examples.</li>
+        </ol>
+        <div id="canvas-holder" style="width:70%">
+            <canvas id="chart-area" />
+        </div>
+        <p>This is an example annual expense chart.</p>
+        <button id="changeChart">View bar graph</button>
+        <script>
+            window.chartColors = {
+                red: 'rgb(255, 99, 132)',
+                orange: 'rgb(255, 159, 64)',
+                yellow: 'rgb(255, 205, 86)',
+                green: 'rgb(75, 192, 192)',
+                blue: 'rgb(54, 162, 235)',
+                purple: 'rgb(153, 102, 255)',
+                grey: 'rgb(231,233,237)'
+            };
+            
+            
+            var dining = function() {
+                return Math.round((16320/40000) * 100);
+            };
+            var shopping = function () {
+                return Math.round((1200/40000) * 100);
+            };
+            var utilityExpenses = function () {
+                return Math.round((2652/40000) * 100);
+            };
+            var travelExpenses = function () {
+                return Math.round((5423/40000 * 100));
+            };
+            var housing = function() {
+                return Math.round((10020/40000) * 100);
+            };
+            var miscellaneous = function () {
+                return Math.round((4385/40000) * 100);
+            }
+        
+    var config = {
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: [
+                    dining(),
+                    shopping(),
+                    utilityExpenses(),
+                    travelExpenses(),
+                    housing(),
+                    miscellaneous(),
+                ],
+                backgroundColor: [
+                    window.chartColors.red,
+                    window.chartColors.orange,
+                    window.chartColors.yellow,
+                    window.chartColors.green,
+                    window.chartColors.blue,
+                    window.chartColors.purple
+                ],
+                label: ''
+            }],
+            labels: [
+                "Dining expenses",
+                "Shopping expenses",
+                "Utility expenses",
+                "Travel expenses",
+                "Housing expenses",
+                "Miscellaneous"
+            ]
+        },
+                options: {
+                    responsive: true
+                }
+            };
+
+            window.onload = function() {
+                var ctx = document.getElementById("chart-area").getContext("2d");
+                window.myPie = new Chart(ctx, config);
+            };
+            
+            document.getElementById('changeChart').addEventListener('click', function() {
+                config.data.datasets.splice(0, 1);
+                window.myPie.update();
+                
+                var barChartData = {
+                    labels: config.data.labels,
+                    datasets: [{
+                        backgroundColor: window.chartColors.red,
+                        borderColor: window.chartColors.red,
+                        borderWidth: 1,
+//                        data: config.data.datasets.data,
+                        data: [
+                            dining(),
+                            shopping(),
+                            utilityExpenses(),
+                            travelExpenses(),
+                            housing(),
+                            miscellaneous(),
+                        ]
+                    }]
+                }
+          
+                var ctx2 = document.getElementById("chart-area").getContext("2d");
+                window.myBar = new Chart(ctx2, {
+                    type: 'bar',
+                    data: barChartData,
+                    options: {
+                        responsive: true,
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Annual Expense Bar Graph'
+                        }
+                    }
+                });
+            barChartData.datasets.forEach(function(dataset) {
+                dataset.data = dataset.data.map(function() {
+                    for (i = 0; i < dataset.data.length; i++ )
+                    return this.data[i];
+                });
+
+            });
+                return window.myBar.update();
+            });    
+                
+            var colorNames = Object.keys(window.chartColors);
+           
+        </script>        
+
+    </body>
+</html>
